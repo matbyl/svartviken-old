@@ -1,15 +1,15 @@
-version: '3'
+version: "3"
 
 services:
   api:
     build: .
     #image: strapi/strapi
     environment:
-      - APP_NAME=strapi-app
+      - APP_NAME=svartviken-cms
       - DATABASE_CLIENT=mongo
       - DATABASE_HOST=db
       - DATABASE_PORT=27017
-      - DATABASE_NAME=strapi
+      - DATABASE_NAME=svartviken
       - DATABASE_USERNAME=
       - DATABASE_PASSWORD=
       - DATABASE_SSL=false
@@ -18,7 +18,7 @@ services:
     ports:
       - 1337:1337
     volumes:
-      - ./strapi-app:/usr/src/api/strapi-app
+      - ./svartviken-cms:/usr/src/api/svartviken-cms
       #- /usr/src/api/strapi-app/node_modules
     depends_on:
       - db
@@ -27,9 +27,9 @@ services:
   db:
     image: mongo
     environment:
-      - MONGO_INITDB_DATABASE=strapi
+      - MONGO_INITDB_DATABASE=svartviken
     ports:
       - 27017:27017
     volumes:
-      - ./db:/data/db
+      - /mathmoose/dockerVolMongo/db:/data/db
     restart: always
